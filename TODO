@@ -1,0 +1,1 @@
+Pass number directly from the parent rather than calculating the square root of the length (src/components/Board/Board.component.tsx)

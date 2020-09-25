@@ -1,0 +1,14 @@
+.square {
+  height: 50px;
+  width: 50px;
+  border: solid 1px grey;
+  outline: none;
+  font-size: 25px;
+  font-weight: bolder;
+  padding: 5px;
+  text-align: center;
+
+  &:focus {
+    outline: none;
+  }
+}

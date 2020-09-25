@@ -1,0 +1,58 @@
+For the project i will be building n*n tic tac toe.
+
+I do most of my logic writing and designing on my notepad using pen and paper, so will attach all those things with the mail.
+
+This is my first attempt at a react project with typescript so there will be a lot of google searches involved. I will keep explaining my steps in the readme file.
+
+* Since i am doing this in between my meetings and office schedules, this might be broken up into parts, although i will try my best to cover it in sections and pick up from where i leave of.
+
+Steps involved:
+
+During my initial days of learning React , i built the basic 3*3 tic tac toe present in the React tutorial, so my current n*n tic tac toe will be inspired by it a little. 
+
+1) Clean up the starter code
+2) Building the rough UI on paper (Mostly figmas are provided to me but when i am building something on my own i like to draw it out on paper). Will attach the same
+3) Based on my current thinking i will be making following components which might help me get the whole app together in the end:
+a) Game Component => TicTac main code
+b) Board Component => Where the design will be rendered
+c) Square / Cell Component => Where the user will click and the move is decided
+d) Winner Screen => Once a winner is decided may be an overlay screen that has an option to restart the game 
+e) History Component => As i mentioned this is inspired by the react tutorial, i will try and implement state management to manage the past moves so the user can go back and decide.
+
+
+In a typical React project i usually build my components as follows:
+components-folder/
+        component-name/-
+                        component-name.container.jsx = This involves all the state related tasks and async tasks 
+                        component-name.component.jsx = this is just for the view part 
+                        component-name.style.scss = I usually prefer scss because i try to avoid nested codes using this. Else css works fine
+                        component-name.styling.jsx = My favorite library to use is styled-components but i implement it only when i know i have ample time, so this is last step.
+
+For a typescript version of the app the extension would be .tsx as read from the documentation
+
+
+Folder steps
+1) Game => //Since this component will include the state it will be a class
+2) Since this has to be an n*n tic tac toe, i will be keeping in mind not to hardcode the value of "n" but for starter logics i am considering a 3*3 matrix.
+And since each square will be clickable with an attached on click event the best way is to make each square as a button
+
+
+//Sorry had a meeting at 2.
+
+First i will try to make the squares rendered dynamic since the styling og squares will depend on the number passed
+
+//Deciding the styles logic in notebook
+
+For the value of n provided a loop should be run that determines the display element should have the style "inline-block" or "block"
+
+I usually make a sticky note of all the tasks or code refactoring i will be doing later to remember if something is to be changed 
+
+
+//Restarting fresh on the onclick logic.. Got confused
+
+
+The function has to be passed from Game component to Board component to Square component so that when square component is clicked, the state in the parent component (Game) modifies.
+
+
+Checking in the code till it works correctly 
+
