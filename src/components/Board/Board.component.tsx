@@ -7,12 +7,7 @@ interface PropsPassed {
 }
 
 const Board: React.FunctionComponent<PropsPassed> = (props) => {
-  console.log("inside board");
-  console.log(props.squares[0]);
-  //To have more control over the rendered style square
-
   const renderStyledSquare = (index: number) => {
-    //The matrix should be moved to new line for element number 0 and the element for which modulus returned will be 0
     if (index === 0 || index % Math.sqrt(props.squares.length) === 0) {
       return (
         <div style={{ display: "block", float: "left", clear: "both" }}>
@@ -42,7 +37,7 @@ const Board: React.FunctionComponent<PropsPassed> = (props) => {
   return (
     <div>
       {props.squares.map((individualSquare: any, index: number) => {
-        return renderStyledSquare(index);
+        return <span key={index}>{renderStyledSquare(index)}</span>;
       })}
     </div>
   );

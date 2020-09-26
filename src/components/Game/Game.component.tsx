@@ -16,8 +16,6 @@ class Game extends Component<squareProps, squareState> {
   constructor(props: squareProps) {
     super(props);
 
-    console.log("props received");
-    console.log(props);
     this.state = {
       numberPassed: props.numberPassed,
       history: [
@@ -33,7 +31,6 @@ class Game extends Component<squareProps, squareState> {
   }
 
   clickHandler = (i: number) => {
-    console.log("Click handler in Game Component" + i);
     const history = this.state.history.slice(0, this.state.currentStep + 1);
     const currentBoardValues = history[history.length - 1];
     const squares = currentBoardValues.squaresToRender.slice();
@@ -44,25 +41,16 @@ class Game extends Component<squareProps, squareState> {
 
     squares[i] = this.state.willXComeNext === true ? "X" : "O";
 
-    this.setState(
-      {
-        history: history.concat({
-          squaresToRender: squares,
-        }),
-        currentStep: history.length,
-        willXComeNext: !this.state.willXComeNext,
-      },
-      () => {
-        console.log(this.state.history);
-      }
-    );
+    this.setState({
+      history: history.concat({
+        squaresToRender: squares,
+      }),
+      currentStep: history.length,
+      willXComeNext: !this.state.willXComeNext,
+    });
   };
 
   goBackInHistory = (historyStep: number) => {
-    console.log("You wish to return to " + historyStep);
-
-    //Alter the state back to this step number
-    //Since we always start with X we know willXComeNext is false in even cases
     this.setState({
       currentStep: historyStep,
       willXComeNext: historyStep % 2 === 0 ? true : false,
@@ -88,41 +76,40 @@ class Game extends Component<squareProps, squareState> {
   }
 
   render() {
-    console.log("Rendering again");
-
-    console.log(this.state.history);
     const squaresTillNow = this.state.history;
     const currentMove = squaresTillNow[this.state.currentStep];
     const winner = winnerLogic(currentMove.squaresToRender);
     const nextTurn = this.state.willXComeNext ? "X" : "O";
 
     let contentToRender: string;
-
+    let playerRender: string = "";
     if (winner) {
       contentToRender = "Winner : ";
+      playerRender = winner;
     } else {
-      contentToRender = "Next Turn : ";
+      if (
+        squaresTillNow.length ===
+        this.props.numberPassed * this.props.numberPassed + 1
+      ) {
+        contentToRender = "Draw ";
+      } else {
+        contentToRender = "Next Turn : ";
+        playerRender = nextTurn;
+      }
     }
 
-    console.log("squaresTillNow");
-    console.log(squaresTillNow);
     const renderHistory = squaresTillNow.map((value: any, index: number) => {
       return (
-        //To be styled
-        //On click of this button we should be able to go back in history which we are already saving
-
-        <div>
-          <button onClick={() => this.goBackInHistory(index)}>
-            {index == 0 ? (
-              <span>Go Back to Start</span>
-            ) : (
-              <span>
-                Go Back To Move
-                <span className="indexValue">{index}</span>
-              </span>
-            )}
-          </button>
-        </div>
+        <button onClick={() => this.goBackInHistory(index)} key={index}>
+          {index === 0 ? (
+            <span>Go Back to Start</span>
+          ) : (
+            <span>
+              Go Back To Move
+              <span className="indexValue">{index}</span>
+            </span>
+          )}
+        </button>
       );
     });
 
@@ -131,7 +118,7 @@ class Game extends Component<squareProps, squareState> {
         <div className="boardWrapper">
           <h1>Tic Tac Toe Game</h1>
           <h2>
-            {contentToRender} <span>{!winner ? nextTurn : winner}</span>
+            {contentToRender} <span>{playerRender}</span>
           </h2>
           <Board
             squares={currentMove.squaresToRender}
@@ -201,10 +188,7 @@ function winnerLogic(squares: any) {
     .concat(diagonalCombinations)
     .concat(invertedDiagonalCombinations);
 
-  console.log(finalWinningCombinations);
-
   for (let i = 0; i < finalWinningCombinations.length; i++) {
-    console.log(finalWinningCombinations[i]);
     let [...a] = finalWinningCombinations[i];
 
     const result = (a: any) =>

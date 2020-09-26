@@ -18,24 +18,24 @@ class App extends Component<{}, stateDefinition> {
 
   changeBoardRendering = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("here");
-    console.log(event);
 
     const numberPassedValue = this.numberInput.current!.value;
-    console.log(numberPassedValue);
-    this.setState(
-      {
-        numberPassed: parseInt(numberPassedValue),
-      },
-      () => console.log("this.state.numberPassed" + this.state.numberPassed)
-    );
+    this.setState({
+      numberPassed: parseInt(numberPassedValue),
+    });
   };
   render() {
     return (
       <div className="App">
         <div className="header">
           <form onSubmit={this.changeBoardRendering}>
-            <input type="number" min="3" ref={this.numberInput} max="12" />
+            <input
+              type="number"
+              min="3"
+              ref={this.numberInput}
+              max="12"
+              required
+            />
             <button type="submit"> Reset Board</button>
           </form>
         </div>
