@@ -1,0 +1,22 @@
+.overflowWrapper {
+  //If number of moves exceed a scroll has been provided so the window doesnt have to be scrolled
+  height: 600px;
+  overflow-y: auto;
+}
+.historyWrapper {
+  button {
+    padding: 10px;
+    font-size: 20px;
+    width: 250px;
+    margin: 2px;
+    border-radius: 5px;
+    outline: none;
+    font-family: "Grenze Gotisch", cursive;
+
+    .indexValue {
+      font-size: 25px;
+      font-weight: bold;
+      margin: 10px;
+    }
+  }
+}

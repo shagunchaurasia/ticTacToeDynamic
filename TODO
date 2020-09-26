@@ -1,1 +1,8 @@
 Pass number directly from the parent rather than calculating the square root of the length (src/components/Board/Board.component.tsx)
+
+
+.every logic to be tested
+src/components/Game/Game.component.tsx
+
+
+. Replace the "any" data type in the app to correct data types

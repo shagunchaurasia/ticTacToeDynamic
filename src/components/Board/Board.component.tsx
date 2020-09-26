@@ -1,7 +1,14 @@
 import React from "react";
 import Square from "../Square/Square.component";
 
-const Board: React.FunctionComponent<{ squares: any }> = (props) => {
+interface PropsPassed {
+  squares: any;
+  clickFunction: any;
+}
+
+const Board: React.FunctionComponent<PropsPassed> = (props) => {
+  console.log("inside board");
+  console.log(props.squares[0]);
   //To have more control over the rendered style square
 
   const renderStyledSquare = (index: number) => {
@@ -9,13 +16,23 @@ const Board: React.FunctionComponent<{ squares: any }> = (props) => {
     if (index === 0 || index % Math.sqrt(props.squares.length) === 0) {
       return (
         <div style={{ display: "block", float: "left", clear: "both" }}>
-          <Square key={index} value={index}></Square>
+          <Square
+            key={index}
+            value={index}
+            square={props.squares[index]}
+            clickFunction={props.clickFunction(index)}
+          ></Square>
         </div>
       );
     } else {
       return (
         <div style={{ display: "inline-block", float: "left" }}>
-          <Square key={index} value={index}>
+          <Square
+            key={index}
+            value={index}
+            square={props.squares[index]}
+            clickFunction={props.clickFunction(index)}
+          >
             {index}
           </Square>
         </div>

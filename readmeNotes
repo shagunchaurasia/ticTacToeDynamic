@@ -56,3 +56,79 @@ The function has to be passed from Game component to Board component to Square c
 
 Checking in the code till it works correctly 
 
+
+Sorry about the typescript blunders, still getting used to all this stuff.
+
+Moving to a new concept to take a timeout from this event handling stuff.
+
+Since each click on the square will call a function that determines the winner logic for the tic tac, i will start building up that logic. 
+
+
+Couldnt think of a better way to implement diagonal logic so writing an inverted diagonal logic 
+
+Sorry about the hit and trial, the binding in ts messed me up a little.
+
+Currently numbers are rendering to the matrix, to determine what will be rendered in the tic tac board i will be passing value based on willXComeNext
+
+The value of X and O is already being passed in the squares array being passed down to square so i will take advantage of that rather than write a new logic based on willXComeNext
+
+
+Sorry it took time to debug.. Moving ahead with the game
+
+Okay so far so good.. Moving to the winning logic.. 
+
+
+The rendering of the tic tac board still depends on a hard coded value, which is the next on the task, so i will be changing that.
+
+Next comes the history/state management for the game. I will be using react state and immutability to store the current moves played already on the board. 
+
+
+There seems to be an issue with the move back into history state.. I will have my dinner and get back to it..
+
+Tasks remaining:
+
+1) Make the tic tac toe rendered dynamic
+2) Design the game to look better
+3) Game over popup and better looking history panel so the use can go back
+
+
+Designing the game
+
+Usually i like to pick nice gradients and write inline styles which i move to specific css / scss files later on.
+
+I like to look at some inspirations too go through pinterest or dribble
+
+I decided to go with some glossy buttons and a nice shaded background
+
+
+
+Due to the screen recording videos my storage is running out.. Sorry .. Let me clean it up and get back to coding ..
+
+Managed to clean up some space.. Will continue working now..
+
+
+Moving the logic of "n" to a dynamic logic
+
+Instead of making separate header code i will be moving the code inside App component itself so the refs can be directly passed
+
+
+Kinda stuck in this TS bug. Will continue with it tomorrow and try to fix it.
+
+
+Starting again fresh today, my system is running low on storage so i am simultaneously moving screen recordings to the drive.. Sorry for random screens
+
+
+Due to width issues i am setting the board to max of 12. If an overflow can be provided this can go upto a higher value of "n"
+
+
+Sorry was having breakfast. I will be finishing up the code, refactoring it a little bit and push the code to my git. I will also be pushing the built code to heroku for you to see the demo of completed app. 
+
+I will attach all the readme with the code and the notebook scribbling and logics i decided on paper.
+
+
+Thankyou so much :)
+
+I have some meetings and knowledge transfers lined up for the weekend but if i get time i might add "Redux" to the project and push the code for you to review.
+
+
+Hopefully this was okay for you to see my though process. :)
